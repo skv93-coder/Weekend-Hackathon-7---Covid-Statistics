@@ -17,13 +17,14 @@ app.get("/totalRecovered", (req, res) => {
         res.send(err);
         return;
       } else {
+        console.log(data);
         data.forEach((element) => {
-          totalRecovered += element.recovered;
+          totalRecovered += parseFloat(element.recovered);
         });
       }
     })
     .then((result) =>
-      res.send({ data: { _id: "total", recovered: totalRecovered } })
+      res.send({ data: { data: { _id: "total", recovered: totalRecovered } } })
     )
     .catch((err) => res.send(err));
 });
@@ -41,7 +42,7 @@ app.get("/totalActive", (req, res) => {
       }
     })
     .then((result) =>
-      res.send({ data: { _id: "total", active: totalRecovered } })
+      res.send({ data: { data: { _id: "total", active: totalRecovered } } })
     )
     .catch((err) => res.send(err));
 });
@@ -60,7 +61,7 @@ app.get("/totalDeath", (req, res) => {
       }
     })
     .then((result) =>
-      res.send({ data: { _id: "total", death: totalRecovered } })
+      res.send({ data: { data: { _id: "total", death: totalRecovered } } })
     )
     .catch((err) => res.send(err));
 });
